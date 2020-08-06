@@ -4,6 +4,7 @@ const PARKS_URL = `${BASE_URL}/parks`
 
 
 let stateContainer = document.querySelector("#state-container")
+let newStateContainer = document.querySelector("#state-form-container")
 
 function getStates() {
     fetch(STATES_URL)
@@ -16,7 +17,6 @@ function getStates() {
 }
 
 function renderState(state) {
-    // add more stuffs
     stateContainer.innerHTML += `
     <div data_id=${state.id}><p>${state.name}</p>
         <button class="delete-button" data-state-id=${state.id}>Delete State</button>
@@ -53,5 +53,28 @@ stateContainer.addEventListener("click", (e) => {
         
         stateCard.remove();
     }
+})
+
+// on clicking the submit button for creating a new state
+newStateContainer.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let info = []
+    e.target.querySelectorAll('input').forEach(input => {
+        info.push(input.value)
+    })
+    fetch(STATES_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            name: info[0]
+        })
+    })
+    .then( response => {
+        return response.json()
+    })
+    .then( json => {renderState(json)})
 })
 
