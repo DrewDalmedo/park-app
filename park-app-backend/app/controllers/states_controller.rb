@@ -9,6 +9,11 @@ class StatesController < ApplicationController
         render json: state, include: [:parks => {except: excluded_data}], except: excluded_data
     end
 
+    def destroy
+        state = State.find(params[:id])
+        state.destroy()
+    end
+
     private
 
     def excluded_data
