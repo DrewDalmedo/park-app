@@ -4,4 +4,14 @@ class StatesController < ApplicationController
         render json: states, include: [:parks => {except: [:created_at, :updated_at]}], except: [:created_at, :updated_at]
     end
     
+    def show
+        state = State.find(params[:id])
+        render json: state, include: [:parks => {except: excluded_data}], except: excluded_data
+    end
+
+    private
+
+    def excluded_data
+        [:created_at, :updated_at]
+    end
 end
