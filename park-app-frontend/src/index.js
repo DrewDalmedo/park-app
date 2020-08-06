@@ -43,11 +43,15 @@ stateContainer.addEventListener("click", (e) => {
     if (e.target.className === "delete-button") {
         e.target.disabled = true;
         let stateID = e.target.dataset.stateId
+        let stateCard = document.querySelector(`div[data_id="${stateID}"]`)
 
-        fetch(`http://localhost:3000/state/${stateID}`, {
-
+        
+        fetch(`http://localhost:3000/states/${stateID}`, {
+            method: "DELETE"
         })
-
+        
+        
+        stateCard.remove();
     }
 })
 
