@@ -2,19 +2,13 @@ const BASE_URL = "http://localhost:3000"
 const STATES_URL = `${BASE_URL}/states`
 const PARKS_URL = `${BASE_URL}/parks`
 
+const stateAdapter = new StateAdapter(STATES_URL)
 
 let stateContainer = document.querySelector("#state-container")
 let newStateContainer = document.querySelector("#state-form-container")
 
-function getStates() {
-    fetch(STATES_URL)
-    .then( response => {
-        return response.json()
-    })
-    .then( json => {
-        json.forEach(renderState)
-    })
-}
+stateAdapter.fetchStates()
+State.renderAll()
 
 function renderState(state) {
     stateContainer.innerHTML += `
@@ -33,11 +27,6 @@ function makeParkLi(park) {
     return `<li>${park.name}</li>`
 }
 
-// on loading the page's content
-document.addEventListener("DOMContentLoaded", () => {
-    getStates();
-})
-
 // on clicking the delete button of a state
 stateContainer.addEventListener("click", (e) => {
     if (e.target.className === "delete-button") {
@@ -45,12 +34,8 @@ stateContainer.addEventListener("click", (e) => {
         let stateID = e.target.dataset.stateId
         let stateCard = document.querySelector(`div[data_id="${stateID}"]`)
 
-        
-        fetch(`http://localhost:3000/states/${stateID}`, {
-            method: "DELETE"
-        })
-        
-        
+        // optimistic rendering
+        stateAdapter.deleteState(stateID)
         stateCard.remove();
     }
 })
