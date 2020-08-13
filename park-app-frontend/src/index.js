@@ -8,24 +8,6 @@ const parkAdapter = new ParkAdapter(PARKS_URL)
 let stateContainer = document.querySelector("#state-container")
 let newStateContainer = document.querySelector("#state-form-container")
 
-// kept for reference
-function renderState(state) {
-    stateContainer.innerHTML += `
-    <div data_id=${state.id}><p>${state.name}</p>
-        <button class="delete-button" data-state-id=${state.id}>Delete State</button>
-        <ul id="state-${state.id}-park-list">
-            ${state.parks.map(makeParkLi).join("")}
-        </ul>
-        <p>=======================</p>
-    </div>
-    `
-
-}
-
-function makeParkLi(park) {
-    return `<li>${park.name}</li>`
-}
-
 // on clicking the delete button of a state
 stateContainer.addEventListener("click", (e) => {
     if (e.target.className === "delete-button") {
