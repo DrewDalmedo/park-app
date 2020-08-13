@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 })
 
 // on clicking the submit button for creating a new state
-// TODO: refactor for OO!!!
 newStateContainer.addEventListener("submit", (e) => {
     e.preventDefault();
     let info = []
