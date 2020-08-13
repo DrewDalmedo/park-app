@@ -10,14 +10,13 @@ let newStateContainer = document.querySelector("#state-form-container")
 
 // on clicking the delete button of a state
 stateContainer.addEventListener("click", (e) => {
-    if (e.target.className === "delete-button") {
+    if (e.target.className === "delete-state-button") {
         e.target.disabled = true;
         let stateID = e.target.dataset.stateId
         let stateCard = document.querySelector(`div[id=state-${stateID}]`)
 
-        // optimistic rendering
         stateAdapter.deleteState(stateID)
-        stateCard.remove();
+        .then( stateCard.remove() )
     }
 })
 
