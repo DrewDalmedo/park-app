@@ -3,13 +3,12 @@ const STATES_URL = `${BASE_URL}/states`
 const PARKS_URL = `${BASE_URL}/parks`
 
 const stateAdapter = new StateAdapter(STATES_URL)
+const parkAdapter = new ParkAdapter(PARKS_URL)
 
 let stateContainer = document.querySelector("#state-container")
 let newStateContainer = document.querySelector("#state-form-container")
 
-stateAdapter.fetchStates()
-State.renderAll()
-
+// kept for reference
 function renderState(state) {
     stateContainer.innerHTML += `
     <div data_id=${state.id}><p>${state.name}</p>
@@ -32,7 +31,7 @@ stateContainer.addEventListener("click", (e) => {
     if (e.target.className === "delete-button") {
         e.target.disabled = true;
         let stateID = e.target.dataset.stateId
-        let stateCard = document.querySelector(`div[data_id="${stateID}"]`)
+        let stateCard = document.querySelector(`div[id=state-${stateID}]`)
 
         // optimistic rendering
         stateAdapter.deleteState(stateID)
@@ -40,7 +39,15 @@ stateContainer.addEventListener("click", (e) => {
     }
 })
 
+document.addEventListener("DOMContentLoaded", (e) => {
+    parkAdapter.load()
+
+    stateAdapter.load()
+    .then( State.renderAll )
+})
+
 // on clicking the submit button for creating a new state
+// TODO: refactor for OO!!!
 newStateContainer.addEventListener("submit", (e) => {
     e.preventDefault();
     let info = []
