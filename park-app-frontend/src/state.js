@@ -12,14 +12,11 @@ class State {
         this.parksContainer = document.createElement('ul')
         this.parksContainer.id = `state-${this.id}-park-list`
 
-        this.main.appendChild(this.parksContainer)
-
         State.all.push(this)
     }
 
     render() {
         // render the misc. details & buttons
-        console.log("d")
         this.main.innerHTML += `
         <p>${this.name}</p>
         <button class="delete-button" data-state-id=${this.id}>Delete State</button>        
@@ -27,24 +24,29 @@ class State {
 
         // render the parks
         // normally we'd rely on a Park class, but this will hold us over for now until we have one
-        makeParkLi = (park) => {
+        let makeParkLi = (park) => {
             return `<li>${park.name}</li>`
         }
 
-        /*
+        
         this.parksContainer.innerHTML += `
-            ${this.parks.map(makeParkLi).join("")}
+            ${makeParkLi({ name: "test"})}
         `
-        */
+
+        this.main.appendChild(this.parksContainer)
+        
+        // separator
+        this.main.innerHTML += `
+        <label>=======================</label>
+        `
 
         State.container.appendChild(this.main)
-        console.log("This should work")
     }
 
     static renderAll() {
-        console.log(this.all)
+        console.log(State.all)
         
-        this.all.forEach((state) => console.log(state))
+        State.all.forEach((state) => state.render())
     }
 
     delete() {
