@@ -23,19 +23,17 @@ class State {
         `
 
         // render the parks
-        // normally we'd rely on a Park class, but this will hold us over for now until we have one
         let makeParkLi = (park) => {
             return `<li>${park.name}</li>`
         }
 
-        
         this.parksContainer.innerHTML += `
-            ${makeParkLi({ name: "test"})}
+            ${this.parks.map(makeParkLi).join("")}
         `
 
         this.main.appendChild(this.parksContainer)
         
-        // separator
+        // stylistic separator
         this.main.innerHTML += `
         <label>=======================</label>
         `
@@ -44,16 +42,14 @@ class State {
     }
 
     static renderAll() {
-        console.log(State.all)
-        
         State.all.forEach((state) => state.render())
     }
 
     delete() {
 
     }
-    
-    get parks() {
 
+    get parks() {
+        return Park.getByState(this.id)
     }
 }
