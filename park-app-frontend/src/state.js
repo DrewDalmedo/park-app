@@ -15,6 +15,7 @@ class State {
         State.all.push(this)
     }
 
+    // renders an individual state
     render() {
         // render the misc. details & buttons
         this.main.innerHTML += `
@@ -41,12 +42,14 @@ class State {
         State.container.appendChild(this.main)
     }
 
+    // renders all states IN THE STATE.ALL ARRAY
     static renderAll() {
         State.all.forEach((state) => state.render())
     }
 
+    // ONLY removes the state from the DOM, not the database! That's the StateAdapter's job!
     delete() {
-
+        this.main.remove()
     }
 
     get parks() {
