@@ -54,19 +54,6 @@ newStateContainer.addEventListener("submit", (e) => {
     e.target.querySelectorAll('input').forEach(input => {
         info.push(input.value)
     })
-    fetch(STATES_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify({
-            name: info[0]
-        })
-    })
-    .then( response => {
-        return response.json()
-    })
-    .then( json => {renderState(json)})
+    stateAdapter.createState(info)
 })
 
