@@ -3,17 +3,21 @@ class StateAdapter {
         this.baseURL = url;
     }
 
-    fetchStates() {
-        return fetch(this.baseURL)
-        .then((obj) => obj.json())
-        .then((statesArray) => {
-            return statesArray.forEach( function(state) {
+    load(){
+        return this.fetchStates()
+        .then( (statesJSON) => {
+            return statesJSON.forEach( (state) => {
                 return new State(state)
             })
         })
     }
 
-    async deleteState(stateID) {
+    fetchStates() {
+        return fetch(this.baseURL)
+        .then( (response) => response.json())
+    }
+
+    deleteState(stateID) {
         fetch(`http://localhost:3000/states/${stateID}`, {
             method: "DELETE"
         })
