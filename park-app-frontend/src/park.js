@@ -6,8 +6,6 @@ class Park {
         this.name = name;
         this.state_id = state_id;
 
-        this.main = document.createElement("li")
-
         Park.all.push(this)
     }
 
