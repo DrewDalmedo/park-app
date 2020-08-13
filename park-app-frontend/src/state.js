@@ -20,7 +20,7 @@ class State {
         // render the misc. details & buttons
         this.main.innerHTML += `
         <p>${this.name}</p>
-        <button class="delete-button" data-state-id=${this.id}>Delete State</button>        
+        <button class="delete-state-button" data-state-id=${this.id}>Delete State</button>        
         `
 
         // render the parks
@@ -50,6 +50,9 @@ class State {
     // ONLY removes the state from the DOM, not the database! That's the StateAdapter's job!
     delete() {
         this.main.remove()
+
+        // maybe add functionality to remove "this" from State.all array?
+        // ^ in addition to the state's parks from the Park.all array
     }
 
     get parks() {
