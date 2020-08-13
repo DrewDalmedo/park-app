@@ -33,7 +33,7 @@ class StateAdapter {
     }
 
     deleteState(stateID) {
-        fetch(`http://localhost:3000/states/${stateID}`, {
+        return fetch(`http://localhost:3000/states/${stateID}`, {
             method: "DELETE"
         })
     }
