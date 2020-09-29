@@ -9,6 +9,7 @@ class Park {
         Park.all.push(this)
     }
 
+    /*
     static getByState(id) {
 
         let matchArray = []
@@ -21,6 +22,7 @@ class Park {
 
         return matchArray
     }
+    */
 
 
 }
