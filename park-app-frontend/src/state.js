@@ -2,9 +2,10 @@ class State {
     static all = []
     static container = document.querySelector("#state-container")
 
-    constructor({id, name}) {
+    constructor({id, name, parks}) {
         this.id = id;
         this.name = name;
+        this.parks = parks;
 
         this.main = document.createElement('div')
         this.main.id = `state-${this.id}`
@@ -55,7 +56,9 @@ class State {
         // ^ in addition to the state's parks from the Park.all array
     }
 
+    /*
     get parks() {
         return Park.getByState(this.id)
     }
+    */
 }
