@@ -1,3 +1,4 @@
+/*
 class ParkAdapter {
     constructor(baseURL) {
         this.baseURL = baseURL;
@@ -17,3 +18,4 @@ class ParkAdapter {
         .then( (response) => response.json())
     }
 }
+*/
