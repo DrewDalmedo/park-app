@@ -3,7 +3,7 @@ const STATES_URL = `${BASE_URL}/states`
 const PARKS_URL = `${BASE_URL}/parks`
 
 const stateAdapter = new StateAdapter(STATES_URL)
-const parkAdapter = new ParkAdapter(PARKS_URL)
+// const parkAdapter = new ParkAdapter(PARKS_URL)
 
 let stateContainer = document.querySelector("#state-container")
 let newStateContainer = document.querySelector("#state-form-container")
@@ -21,7 +21,7 @@ stateContainer.addEventListener("click", (e) => {
 })
 
 document.addEventListener("DOMContentLoaded", (e) => {
-    parkAdapter.load()
+    //parkAdapter.load()
 
     stateAdapter.load()
     .then( State.renderAll )
