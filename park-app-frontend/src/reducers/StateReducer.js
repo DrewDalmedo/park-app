@@ -1,4 +1,5 @@
-import { FETCH_STATES, ADD_STATES } from '../actions/ActionList' 
+import { FETCH_STATES, ADD_STATES, DELETE_STATE } from '../actions/ActionList' 
+
 function stateReducer(
   state = {
     states: [],
@@ -17,6 +18,12 @@ function stateReducer(
       return {
         ...state,
         states: action.states,
+        requesting: false
+      }
+    case DELETE_STATE:
+      return {
+        ...state,
+        states: state.states.filter( state => state.id !== action.stateID ),
         requesting: false
       }
     default:
