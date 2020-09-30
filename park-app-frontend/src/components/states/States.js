@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchStates } from '../../actions/StateActions'
+import { fetchStates, deleteState } from '../../actions/StateActions'
 
 import StateCard from './StateCard'
 
@@ -16,6 +16,10 @@ class States extends React.Component {
       return (
         <StateCard 
           state={state}
+          deleteStateAction={ e => {
+            e.target.disabled = true;
+            this.props.deleteState(state.id)
+          }}
         />
       )
     })
@@ -38,7 +42,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getStates: () => dispatch( fetchStates() )
+    getStates: () => dispatch( fetchStates() ),
+    deleteState: (id) => dispatch( deleteState(id) )
   }
 }
 
