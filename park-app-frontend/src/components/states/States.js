@@ -14,7 +14,9 @@ class States extends React.Component {
   renderStateCards = () => {
     return this.props.states.map( state => {
       return (
-        <StateCard />
+        <StateCard 
+          state={state}
+        />
       )
     })
   }  
