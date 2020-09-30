@@ -17,7 +17,7 @@ class StateCard extends React.Component {
       <div>
         { this.props.state.name }
         <br />
-        <button>Delete State</button>
+        <button onClick={this.props.deleteStateAction}>Delete State</button>
         <ul>
           { this.renderStateParks( parks ) }
         </ul>
