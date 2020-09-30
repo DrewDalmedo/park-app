@@ -1,10 +1,27 @@
 import React from 'react'
 
 class StateCard extends React.Component {
+
+  renderStateParks = (parks) => {
+    return parks.map( park => {
+      return(
+        <li>{park.name}</li>
+      )
+    })
+    
+  }
+
   render() {
+    const parks = this.props.state.parks
     return (
       <div>
-        StateCard Component
+        { this.props.state.name }
+        <br />
+        <button>Delete State</button>
+        <ul>
+          { this.renderStateParks( parks ) }
+        </ul>
+        <p>====================</p>
       </div>
     )
   }
