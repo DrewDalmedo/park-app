@@ -1,4 +1,4 @@
-import { FETCH_STATES, ADD_STATES } from './ActionList'
+import { FETCH_STATES, ADD_STATES, DELETE_STATE } from './ActionList'
 
 export const fetchStates = () => {
   return dispatch => {
@@ -9,3 +9,12 @@ export const fetchStates = () => {
   }  
 }
 
+export const deleteState = (stateID) => {
+  return dispatch => {
+    // send a delete request to '/states/stateID' and remove that state from redux
+    fetch(`/states/${stateID}`, {
+      method: "DELETE"
+    })
+      .then( dispatch({ type: DELETE_STATE, stateID: stateID }) )
+  }
+}
