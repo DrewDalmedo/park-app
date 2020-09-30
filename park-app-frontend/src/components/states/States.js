@@ -1,11 +1,43 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { fetchStates } from '../../actions/StateActions'
+
+import StateCard from './StateCard'
 
 class States extends React.Component {
+
+  componentDidMount() {
+    this.props.getStates()
+  }
+
+  renderStateCards = () => {
+    return this.props.states.map( state => {
+      return (
+        <StateCard />
+      )
+    })
+  }  
+
   render() {
-    <div>
-      States Component
-    </div>
+    return (
+      <div>
+        { this.renderStateCards() }
+      </div>
+    )
   }
 }
 
-export default States
+const mapStateToProps = state => {
+  return {
+    states: state.states
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getStates: () => dispatch( fetchStates() )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(States)
