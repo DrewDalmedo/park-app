@@ -17,7 +17,6 @@ class States extends React.Component {
         <StateCard 
           state={state}
           deleteStateAction={ e => {
-            e.target.disabled = true;
             this.props.deleteState(state.id)
           }}
         />
