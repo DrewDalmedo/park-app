@@ -1,4 +1,4 @@
-import { FETCH_STATES, ADD_STATES, DELETE_STATE } from './ActionList'
+import { FETCH_STATES, ADD_STATES, DELETE_STATE, ADD_STATE } from './ActionList'
 
 export const fetchStates = () => {
   return dispatch => {
@@ -7,6 +7,22 @@ export const fetchStates = () => {
       .then( response => response.json() )
       .then( states => dispatch({ type: ADD_STATES, states: states }) )
   }  
+}
+
+export const addNewState = (stateName) => {
+  return dispatch => {
+    fetch('/states', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: stateName
+      })
+    })
+      .then( response => response.json() )
+      .then( state => dispatch({ type: ADD_STATE, state: state }) )
+  }
 }
 
 export const deleteState = (stateID) => {
