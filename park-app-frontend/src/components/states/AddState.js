@@ -1,4 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { addNewState } from '../../actions/StateActions'
 
 class AddState extends React.Component {
   state = {
@@ -13,7 +16,7 @@ class AddState extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // do the cool submit stuff we want here
+    this.props.addNewState( this.state.stateName )
     this.setState({
       stateName: ""
     })
@@ -42,4 +45,16 @@ class AddState extends React.Component {
 
 }
 
-export default AddState
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addNewState: stateName => dispatch( addNewState(stateName) )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddState);
