@@ -1,12 +1,12 @@
 class StatesController < ApplicationController
     def index
         states = State.all
-        render json: states, include: [:parks => {except: excluded_data}], except: excluded_data
+        render json: states
     end
     
     def show
         state = State.find(params[:id])
-        render json: state, include: [:parks => {except: excluded_data}], except: excluded_data
+        render json: state
     end
 
     def create
@@ -25,7 +25,4 @@ class StatesController < ApplicationController
         params.permit(:name)
     end
 
-    def excluded_data
-        [:created_at, :updated_at]
-    end
 end
