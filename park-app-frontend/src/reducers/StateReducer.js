@@ -1,4 +1,9 @@
-import { FETCH_STATES, ADD_STATES, ADD_STATE, DELETE_STATE } from '../actions/ActionList' 
+import { 
+  FETCH_STATES, 
+  ADD_STATES, 
+  ADD_STATE, 
+  DELETE_STATE, 
+} from '../actions/ActionList' 
 
 function stateReducer(
   state = {

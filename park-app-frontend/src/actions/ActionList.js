@@ -5,3 +5,5 @@ export const ADD_STATE = 'ADD_STATE'
 export const DELETE_STATE = 'DELETE_STATE'
 
 // parks
+
+// trails

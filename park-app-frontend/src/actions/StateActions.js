@@ -1,4 +1,9 @@
-import { FETCH_STATES, ADD_STATES, DELETE_STATE, ADD_STATE } from './ActionList'
+import { 
+  FETCH_STATES, 
+  ADD_STATES, 
+  DELETE_STATE, 
+  ADD_STATE, 
+} from './ActionList'
 
 export const fetchStates = () => {
   return dispatch => {
