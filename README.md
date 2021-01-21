@@ -17,15 +17,20 @@ $ git clone https://github.com/DrewDalmedo/park-app
 $ cd park-app
 ```
 
-Move over to the `park-app-frontend` directory and open `index.html` in your browser. On MacOS, the process can be done as follows:
+Move over to the `park-app-frontend` directory and install the required dependencies by running `npm install`. On MacOS, the process can be done as follows:
 ```sh
 $ cd park-app-frontend
-$ open index.html
+$ npm install
 ```
 
-Next, `cd` into the `park-app-backend` directory and run `bundle install`
+After the dependencies are installed, you can run the web app in your browser by running `npm start` in your terminal. It should open a new tab in your browser with the web app running automatically.
 ```sh
-$ cd ../park-app-backend && bundle install
+$ npm start
+```
+
+Next, open a new terminal, `cd` into the `park-app-backend` directory, and run `bundle install`
+```sh
+$ cd park-app-backend && bundle install
 ```
 
 After installing the app's dependencies, you need to run a database migration:
